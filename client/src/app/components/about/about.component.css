@@ -1,0 +1,16 @@
+.category-title {
+    margin-inline: 1.5rem 6rem;
+    background: #dee5f052;
+    padding: 0.5rem 1rem;
+    color: #39557c;
+    direction: rtl;
+}
+.desc {
+    display: block;
+    margin: 0 12rem 12rem;
+    font-family: assistant;
+    font-size: 20px;
+    color: #39557c;
+    line-height: 32px;
+    direction: rtl;
+}

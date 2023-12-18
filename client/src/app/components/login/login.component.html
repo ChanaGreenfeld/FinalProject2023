@@ -1,0 +1,37 @@
+<form class="c-container" (ngSubmit)="login($event)">
+
+    <div class="wrap-navs">
+        <ul class="c-navs">
+            <li class="c-nav">
+                <a routerLink="/login" class="tablinks active">
+                    <mat-icon>account_circle</mat-icon>
+                    <label>התחברות</label>
+                </a>
+            </li>
+            <li class="c-nav">
+                <a routerLink="/register" class="tablinks">
+                    <mat-icon>star</mat-icon>
+                    <label>הרשמה</label>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <h1>ברוכים השבים!</h1>
+    <h2 class="subtitle">
+        <mat-icon>account_circle</mat-icon>
+        <label>התחברות</label>
+    </h2>
+    <div class="fields">
+        <div class="field">
+            <b>שם משתמש</b>
+            <input type="text" placeholder="שם משתמש" name="username" required="שדה חובה" >
+        </div>
+        <div class="field">
+            <b>סיסמא</b>
+            <input type="password" placeholder="סיסמא" name="password" required="שדה חובה" >
+        </div>
+        <button type="submit" class="login-button">כניסה</button>
+        <a routerLink="/forgotPass" class="tablinks comment">שכחתי סיסמא</a>
+    </div>
+</form>       

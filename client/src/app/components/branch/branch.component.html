@@ -1,0 +1,39 @@
+<div align="center">
+<input type="text" class="inputsearch" placeholder="חפש סניפים" (input)="searchFilter($event)" />
+<h3>עליך למצוא את הסניף שאליו יגיעו המוצרים</h3>
+<button *ngIf="this.show" (click)="open()" class="buttonsearch">
+  למציאת הסניף הקרוב אליך ביותר
+</button>
+<br/>
+<div *ngIf="!this.show" >
+    <label>הכנס את הכתובת שלך</label>
+    <br/>
+    <input class="inputsearch" placeholder="הכנס את הכתובת שלך" ngx-google-places-autocomplete  #text (onAddressChange)="changeOrigin($event)" (options)="(options)"  />
+    <br/>
+
+    <mat-form-field appearance="fill">
+      <mat-label class="inputsearch">דרכי הגעה</mat-label>
+      <mat-select #select (valueChange)="onSelect(select.value)" >
+        <mat-option *ngFor="let mode of modes" [value]="mode" >
+          {{mode}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+        <button class="buttonsearch" (click)="showShortestWay()">הראה לי את נקודת האיסוף</button>
+      </div>
+<br/>
+</div>
+
+<mat-grid-list *ngIf="filterBranches.length > 0" cols="3"   rowHeight="150px">
+ 
+  <mat-grid-tile *ngFor="let branch of filterBranches">
+     <h2>{{ branch.name }}</h2>
+     <br/>
+  <p>{{ branch.address }}</p>
+  <b>שעות פעילות </b>
+  <p>א׳-ה׳: 9:00-21:00
+    ו׳ וערבי חג: 9:00-15:00</p>
+  </mat-grid-tile>
+
+</mat-grid-list>
+<button (click)="pay()" *ngIf="user" class="login-button">המשך לתשלום</button>

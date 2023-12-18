@@ -1,0 +1,27 @@
+
+ <div class="wrap-categories">
+    <h2 class="category-title">{{category}}</h2>
+    <label class="desc">
+    {{categoryDescription}}
+    </label>
+  <label class="count" *ngIf="products.length==20">{{products.length}} פריטים מתוך הרבה</label>
+  <label class="count" *ngIf="products.length!=20">{{products.length}} פריטים</label>
+
+  <product *ngFor="let p of products" [product]="p" [isSale]="false"></product>
+
+
+</div>
+
+<div class="pagination" *ngIf="allOrCatBool">
+  <button [disabled]="pageNo === totalPages()" (click)="setPageNo(pageNo + 1); scrollToTop()" class="np">הבא</button>
+  <button [disabled]="pageNo === i" *ngFor="let i of getPages()" (click)="setPageNo(i); scrollToTop()">{{ i }}</button>
+  <button [disabled]="pageNo === 1" (click)="setPageNo(pageNo - 1); scrollToTop()"class="np">הקודם</button>
+</div>
+
+<nav aria-label="Page navigation" *ngIf="!allOrCatBool">
+  
+  <ul class="pagination">
+   <li><button class="page-link" href="javascript:void(0);" class="np"  (click)="setPageNoCat(pageNo + 1); scrollToTop()">הבא</button></li> 
+   <li><button class="page-link" href="javascript:void(0);" class="np"  tabindex="-1" (click)="setPageNoCat(pageNo - 1); scrollToTop()" >הקודם</button></li> 
+  </ul>
+</nav> 

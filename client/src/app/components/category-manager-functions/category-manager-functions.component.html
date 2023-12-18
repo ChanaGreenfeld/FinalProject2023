@@ -1,0 +1,51 @@
+  <div *ngIf="categories.length > 0" class="shopping-cart" align="center">
+    <h1>קטגוריות</h1>
+    <mat-card>
+      <mat-card-header>
+        <h3>צפייה בכל הקטגוריות</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="cart">
+          <tbody>
+            <tr *ngFor="let cat of categories">
+              <td class="product-details">
+                <div class="desc">
+                  <h3>{{cat.nameCategory}}</h3>
+                </div>
+              </td>
+              <td>
+                <button mat-icon-button (click)="deleteCategory(cat._id)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button (click)="toEdit(cat._id)"><mat-icon>edit</mat-icon></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <button type="submit" class="login-button" (click)="toAdd()">הוסף קטגוריה</button>
+
+<form  *ngIf="flagAdd" class="container" (ngSubmit)="addCategory($event)">
+  <h1>הוספת קטגוריה</h1>
+  <h2 class="subtitle">
+  </h2>
+  <div class="fields">
+      <div class="field">
+          <b>הכנס שם קטגוריה שברצונך להוסיף</b>
+          <input type="search" placeholder="שם קטגוריה" name="cat" required>
+      </div>
+      <button type="submit" class="login-button">הוסף</button>
+  </div>
+  </form>
+<form  *ngIf="flagEdit" class="container" (ngSubmit)="editCategory($event)">
+  <h1>עריכת קטגוריה</h1>
+  <h2 class="subtitle">
+  </h2>
+  <div class="fields">
+      <div class="field">
+          <b>הכנס שם קטגוריה חדש לעדכון</b>
+          <input type="search" placeholder="שם קטגוריה" name="cat" required>
+      </div>
+      <button type="submit" class="login-button">עדכן</button>
+  </div>
+  </form>

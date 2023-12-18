@@ -1,0 +1,93 @@
+<div class="header">
+    <div class="c-navbar c-navbar-1">
+        <button class="c-nav" [matMenuTriggerFor]="menuCategory">קטגוריות</button>
+        <mat-divider [vertical]="true"></mat-divider>
+        <a class="c-nav" routerLink="/viewproducts" aria-label="תצוגת כל המוצרים" [queryParams]=" { category: 'all' }">toysWay</a>
+        <mat-divider [vertical]="true"></mat-divider>
+        <button class="c-nav" [matMenuTriggerFor]="menuAge" aria-label="צפייה במוצרים לפי גיל">גיל</button>
+        <mat-divider [vertical]="true"></mat-divider>
+        <a class="c-nav" routerLink="/giftCard" aria-label="שלח כרטיס מתנה למי שאתה חפץ להפתיע, אולי לעצמך..."> <mat-icon>card_giftcard</mat-icon>
+            <label class="gift-card-txt">Gift Card</label></a>
+        <mat-divider [vertical]="true"></mat-divider>
+        <a class="c-nav" routerLink="/sale" aria-label="צפייה במוצרים שבמחיר מבצע ">Sale</a>
+    </div>
+
+    <img class="logo-img"  src="../../../assets/logo-project.jpg" (click)="navigateToHome()" alt="לוגו"/>
+
+    <div class="c-navbar c-navbar-2">
+
+        <div class="search-box c-nav not-hover-effect" (keyup)="showSearchBox=true">
+            <mat-icon *ngIf="!showSearchBox" (click)="showSearchBox=true" #searchIcon>search</mat-icon>
+            <button class="btn" *ngIf="showSearchBox" (click)="close()">   <mat-icon  #searchIcon>close</mat-icon></button>
+            <input type="text" placeholder="אני רוצה לחפש..." [(ngModel)]="value" (input)="searchFilter($event)"
+                #searchInput />
+                <table *ngIf="showSearchBox" class="search-results">
+                    <tbody>
+                        <tr *ngFor="let fil of  filterProducts">
+                            <td (click)="productDetail(fil._id)">{{ fil.name }}</td>
+                        </tr>
+                        <tr *ngIf="filterProducts.length==0">
+                            <td>
+                                <p>לא נמצאו תוצאות מתאימות.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        <div class="wrap-actions" *ngIf="!showSearchBox">
+
+            <mat-divider [vertical]="true"></mat-divider>
+            <a class="c-nav" routerLink="/login" aria-label="כניסת משתמש קיים למערכת"><mat-icon>account_circle</mat-icon></a>
+            <mat-divider [vertical]="true"></mat-divider>
+            <a class="c-nav" routerLink="/shoppingList"  aria-label="צפייה בסל הקניות שלי"><mat-icon [matBadge]="count" matBadgeColor="warn">shopping_cart</mat-icon></a>
+            <mat-divider [vertical]="true"></mat-divider>
+            <a class="c-nav" routerLink="/branches" aria-label="בחירת סניף קרוב וחישוב מסלול עד הבית"><mat-icon>location_on</mat-icon>
+                <label>סניפים</label>
+            </a>
+            <mat-divider [vertical]="true"></mat-divider>
+            <a class="c-nav" routerLink="/about" aria-label="אודות Toysway">אודות</a>
+        </div>
+    </div>
+
+    <mat-menu #menuCategory="matMenu" aria-label="לצפייה לפי קטגורית משחקים">
+        <a mat-menu-item class="button" value="box" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית משחקי קופסא וחברה" [queryParams]="{category:'משחקי קופסא וחברה'}">משחקי קופסא וחברה🗃️</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="puzzle" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית פאזלים" [queryParams]="{category:'משחקי פאזלים'}">משחקי פאזלים🧩</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="summer" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית קיץ" [queryParams]="{category:'קיץ'}">קיץ🏖️</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="trains&Vehicles" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית כלי רכב , רכבות וחניונים" [queryParams]="{category:'כלי רכב רכבות וחניונים'}">כלי רכב , רכבות וחניונים 🚗</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="Bicycle&scooter" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית אופניים , קורקינטים וממונעים לילדים" [queryParams]="{category:'אופניים קורקינטים וממונעים לילדים'}">אופניים, קורקינטים וממונעים לילדים🛴</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="babys" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית צעצועים וציוד תינוקות ופעוטות" [queryParams]="{category:'צעצועים וציוד תינוקות ופעוטות'}">צעצועים וציוד תינוקות ופעוטות🍼</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="AssemblyGames" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית משחקי קוביות והרכבה" [queryParams]="{category:'משחקי קוביות והרכבה'}">משחקי קוביות והרכבה🎲</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="remote" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית על שלט" [queryParams]="{category:'על שלט'}">על שלט📱</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="dolls" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית בובות , בתי בובות ואביזרי משחק" [queryParams]="{category:'בובות בתי בובות ואביזרי משחק'}">בובות , בתי בובות ואביזרי משחק🧸</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="YardGames" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית משחקי חצר" [queryParams]="{category:'משחקי חצר'}">משחקי חצר⚽</a>
+        <mat-divider></mat-divider>
+        <a mat-menu-item class="button" value="playingCards" routerLink="/viewproducts" aria-label="לצפייה לפי קטגורית משחקי קלפים" [queryParams]="{category:'משחקי קלפים'}">משחקי קלפים🃏</a>
+    </mat-menu>
+
+    <mat-menu #menuAge="matMenu">
+        <button mat-menu-item value="0-2" routerLink="/age" [queryParams]="{age:'0-2'}">0-2</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="2-4" routerLink="/age" [queryParams]="{age:'2-4'}">2-4</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="4-6"  routerLink="/age" [queryParams]="{age:'4-6'}">4-6</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="6-8"  routerLink="/age" [queryParams]="{age:'6-8'}">6-8</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="8-10"  routerLink="/age" [queryParams]="{age:'8-10'}">8-10</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item value="10-99" routerLink="/age" [queryParams]="{age:'10-99'}">10-99</button>
+    </mat-menu>
+   
+</div>
+
+<div class="save-place"></div>
+

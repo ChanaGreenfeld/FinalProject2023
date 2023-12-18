@@ -1,0 +1,9 @@
+.alert{
+background-color: rgb(245, 112, 238);
+    color: rgb(6, 6, 143);
+    width: 50rem;
+    border: rgb(245, 112, 238);
+    height:10rem;
+    text-align: center;
+    font-size: large;
+}

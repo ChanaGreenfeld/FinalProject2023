@@ -1,0 +1,99 @@
+  <div  *ngIf="managers.length > 0" class="shopping-cart" >
+    <h1>מנהלי סניפים</h1>
+  
+    <mat-card>
+      <mat-card-header>
+        <h3>צפייה בכל מנהלי הסניפים</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="cart">
+          <tbody>
+            <tr *ngFor="let manag of managers">
+              <td class="product-details">
+                <div class="desc">
+                  <h3>{{manag.firstName}}</h3>
+                </div>
+              </td>
+              <td class="product-details">
+                <div class="desc">
+                  <h3>{{manag.lastName }}</h3>
+                </div>
+              </td>
+              <td class="product-details">
+                <div class="desc">
+                  <h3>{{manag.branchName  }}</h3>
+                </div>
+              </td>
+              <td>
+                <button mat-icon-button (click)="deleteManager(manag._id)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button (click)="toEdit(manag)"><mat-icon>edit</mat-icon></button>
+              </td>
+              <hr/>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <button type="submit" class="login-button" (click)="changeAddFlag()">הוסף מנהל סניף</button>
+
+  <form *ngIf="flagAdd" class="container" (ngSubmit)="addmanager($event)">
+    <h1>הוספת מנהל סניף</h1>
+    <h2 class="subtitle">
+    </h2>
+    <div class="fields">
+        <div class="field">
+            <b>הכנס שם פרטי חדש לעדכון</b>
+            <input type="search"  placeholder="הכנס שם פרטי" name="cat" required>
+        </div>
+        <div class="field">
+          <b>הכנס שם משפחה חדש לעדכון</b>
+          <input type="search" placeholder="הכנס שם משפחה" name="cat" required>
+      </div>
+      <div class="field">
+        <b>הכנס שם משתמש חדש לעדכון</b>
+        <input type="search" placeholder="הכנס שם משתמש" name="cat" required>
+    </div>
+    <div class="field">
+      <b>הכנס סיסמא חדשה לעדכון</b>
+      <input type="search" placeholder="הכנס סיסמא" name="cat" required>
+  </div>
+  <select  (change)="saveBranch($event)">
+    <option  matInput *ngFor="let branch of branches" [value]="branch.name">{{branch.name}}</option>
+      </select>
+        <button type="submit" class="login-button">הוספה</button>
+    </div>
+    </form>
+    
+
+
+  <form *ngIf="flagEdit" class="container" (ngSubmit)="editmanager($event)">
+    <h1>עריכת מנהל סניף</h1>
+    <h2 class="subtitle">
+    </h2>
+    <div class="fields">
+        <div class="field">
+            <b>הכנס שם פרטי חדש לעדכון</b>
+            <input type="search" value="{{managerToEdit.firstName}}" name="cat" required>
+        </div>
+        <div class="field">
+          <b>הכנס שם משפחה חדש לעדכון</b>
+          <input type="search" value="{{managerToEdit.lastName}}" name="cat" required>
+      </div>
+      <div class="field">
+        <b>הכנס שם משתמש חדש לעדכון</b>
+        <input type="search" value="{{managerToEdit.userName}}" name="cat" required>
+    </div>
+    <div class="field">
+      <b>הכנס סיסמא חדשה לעדכון</b>
+      <input type="search" value="{{managerToEdit.password}}" name="cat" required>
+  </div>
+  <select  (change)="saveBranch($event)">
+    <option matInput *ngFor="let branch of branches" [value]="branch.name">{{branch.name}}</option>
+      </select>
+        <button type="submit" class="login-button">עדכן</button>
+    </div>
+    </form>
+    

@@ -1,0 +1,64 @@
+
+  <div class="shopping-cart">
+    <h1>סל הקניות שלי</h1>
+  
+    <mat-card>
+      <mat-card-header>
+        <h3>הפריטים שלי</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="cart">
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td class="product-details">
+                <img [src]="product.pic" />
+                <div class="desc">
+                  <h3>{{product.name}}</h3>
+                  <label>{{product._id}}</label>
+                </div>
+              </td>
+              <td class="count-td">
+                <strong>כמות:</strong>
+                <count-selection (onCountChange)="updateCount($event,product)" [count]="1">product.item</count-selection>
+              </td>
+              <td class="price-td">
+                <strong>מחיר: </strong>
+                <label>₪{{product.price}}</label>
+              </td>
+              <td>
+                <button mat-icon-button (click)="deleteFromShoppingList(product)"><mat-icon>delete</mat-icon></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="summary">
+      <mat-card-header>
+        <h3>סיכום פרטי הזמנה</h3>
+        <p class="summary-count">{{products.length}} פריטים בסל</p>
+      </mat-card-header>
+      <mat-card-content>
+        <table>
+          <tbody>
+            <tr>
+              <th><p>סכום ביניים</p></th>
+              <td><p>₪{{total}}</p></td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-divider></mat-divider>
+        <table>
+          <tbody>
+            <tr>
+              <th><p>סה"כ להזמנה</p></th>
+              <td><p>₪{{total}}</p></td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="for-payment-button" (click)="continue()">המשך לתשלום</button>
+      </mat-card-content>
+    </mat-card>
+  
+  </div>

@@ -1,0 +1,12 @@
+.sub-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.img {
+    background-size: cover;
+    background-position: center;
+}

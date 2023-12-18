@@ -1,0 +1,42 @@
+.wrap-categories {
+    direction: rtl;
+    padding-inline: 4rem;
+}
+
+product {
+    display: inline-block;
+    margin: 0.5rem 1rem;
+}
+
+.category-title {
+    margin-inline: 1.5rem 6rem;
+    background: #dee5f052;
+    padding: 0.5rem 1rem;
+    color: #39557c;
+}
+
+.count, .desc {
+    display: block;
+    margin: 0 4rem 1rem;
+    font-family: assistant;
+    font-size: 18px;
+    color: #39557c;
+    line-height: 26px;
+}
+.np{
+    background: #046e09;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    font-family: assistant;
+    font-size: 21px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    box-shadow: inset 0 -10px 0 0 #1a6105;
+    border-radius: 26px;
+    text-align: center;
+    width: 10%;
+    margin-top: auto;
+}

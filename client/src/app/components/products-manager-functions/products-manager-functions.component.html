@@ -1,0 +1,121 @@
+
+  <mat-card>
+    <mat-card-header>
+      <h3> צפייה בכל המוצרים </h3>
+    </mat-card-header>
+    <mat-card-content>
+  
+  <table class="cart" *ngIf="products.length > 0">
+      <thead>
+        <tr>
+            <th>שם קטגוריה</th>
+            <th>שם מוצר</th>
+            <th>תיאור</th>
+            <th>מחיר</th>
+            <th>יחידות</th>
+            <th>תמונה</th>
+            <th>גיל</th>
+            <th>פופולרי</th>
+            <th>הנחה</th>
+            <th>תאריך</th>
+        </tr>
+      </thead>
+      <tbody  data-test-id="searched-customers">
+        <tr *ngFor="let prod of product" class="slide-up-fade-in">
+            <td>{{ prod.nameCategory }}</td>
+            <td>{{ prod.name }}</td>
+            <td>{{ prod.description }}</td>
+            <td>{{ prod.price }}</td>
+            <td>{{ prod.units }}</td>
+            <img [src]="prod.pic" />
+            <td>{{ prod.age }}</td>
+            <td>{{ prod.populare }}</td>
+            <td>{{ prod.salary }}</td>
+            <td>{{ prod.date }}</td>
+            <td>
+                <button mat-icon-button (click)="deleteProduct(prod)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button (click)="toEdit(prod)"><mat-icon>edit</mat-icon></button>
+              </td>
+        </tr>
+  
+      </tbody>
+    </table>
+  </mat-card-content>
+  </mat-card>
+        
+
+
+  <button type="submit" class="login-button" (click)="changeAddFlag()">הוסף מוצר</button>
+
+
+
+<form *ngIf="flagEdit" class="container" (ngSubmit)="editProduct()">
+    <h1>עריכת מוצר</h1>
+    <h2 class="subtitle">
+    </h2>
+    <div class="fields">
+        <div class="field">
+            <b>הכנס שם קטגוריה</b>
+            <input type="search"  placeholder="שם קטגוריה" name="cat" required>
+        </div>
+        <div class="field">
+          <b>שם מוצר</b>
+          <input type="search" placeholder="שם מוצר" name="cat" required>
+      </div>
+      <div class="field">
+        <b>מחיר</b>
+        <input type="search" placeholder="מחיר" name="cat" required>
+    </div>
+    <div class="field">
+      <b>תאור</b>
+      <input type="search" placeholder="תאור" name="cat" required>
+  </div>
+ 
+  <div class="field">
+    <b>מלאי</b>
+    <input type="search" placeholder="מלאי" name="cat" required>
+</div>  <div class="field">
+    <b>הנחה</b>
+    <input type="search" placeholder="הנחה" name="cat" required>
+</div>
+        <button type="submit" class="login-button">הוספה</button>
+    </div>
+    </form>
+   
+
+
+
+
+<form *ngIf="flagAdd" class="container" (ngSubmit)="addProduct()">
+    <h1>הוספת מוצר</h1>
+    <h2 class="subtitle">
+    </h2>
+    <div class="fields">
+        <div class="field">
+            <b>הכנס שם קטגוריה</b>
+            <input type="search"  placeholder="שם קטגוריה" name="cat" required>
+        </div>
+        <div class="field">
+          <b>שם מוצר</b>
+          <input type="search" placeholder="שם מוצר" name="cat" required>
+      </div>
+      <div class="field">
+        <b>מחיר</b>
+        <input type="search" placeholder="מחיר" name="cat" required>
+    </div>
+    <div class="field">
+      <b>תאור</b>
+      <input type="search" placeholder="תאור" name="cat" required>
+  </div>
+ 
+  <div class="field">
+    <b>מלאי</b>
+    <input type="search" placeholder="מלאי" name="cat" required>
+</div>  <div class="field">
+    <b>הנחה</b>
+    <input type="search" placeholder="הנחה" name="cat" required>
+</div>
+        <button type="submit" class="login-button">הוספה</button>
+    </div>
+    </form>
+   

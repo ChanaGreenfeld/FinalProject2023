@@ -1,0 +1,6 @@
+
+<div class="wrap-categories">
+  <h2 class="category-title"> מוצרים לגילאי {{ages}}</h2>
+  <label class="count">{{products.length}} פריטים</label>
+  <product *ngFor="let product of products" [product]="product"></product>
+</div>

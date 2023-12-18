@@ -1,0 +1,68 @@
+  <div *ngIf="branches.length > 0" class="shopping-cart" align="center">
+    <h1>סניפים</h1>
+    <mat-card>
+      <mat-card-header>
+        <h3>צפייה בכל הסניפים</h3>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="cart">
+          <tbody>
+            <tr *ngFor="let branch of branches">
+              <td class="product-details">
+                <div class="desc">
+                  <h3>{{branch.name}}</h3>
+                </div>
+              </td>
+              <td class="product-details">
+               
+                <div class="desc">
+                  <h3>{{branch.address}}</h3>
+                </div>
+              </td>
+              <td>
+                <button mat-icon-button (click)="toEdit(branch)"><mat-icon>edit</mat-icon></button>
+              </td>
+              <hr/>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+<form  *ngIf="flagEdit" class="container" (ngSubmit)="editbranch($event)">
+  <h1>עריכת סניף</h1>
+  <h2 class="subtitle">
+  </h2>
+  <div class="fields">
+      <div class="field">
+          <b>עדכן שם סניף</b>
+          <input type="search" value="{{branchToEdit.name}}" name="cat" required>
+      </div>
+      <div class="field">
+        <b>עדכן כתובת</b>
+        <input type="search"  value="{{branchToEdit.address}}" name="cat" required>
+    </div>
+      <button type="submit" class="login-button">עדכן</button>
+  </div>
+  </form>
+
+<button type="submit" class="login-button" (click)="changeAddFlag()">הוסף  סניף</button>
+
+
+<form  *ngIf="flagAdd" class="container" (ngSubmit)="addBranch($event)">
+  <h1>הוספת סניף</h1>
+  <h2 class="subtitle">
+  </h2>
+  <div class="fields">
+      <div class="field">
+          <b>הכנס שם סניף</b>
+          <input type="search" placeholder="הכנס שם סניף" name="cat" required>
+      </div>
+      <div class="field">
+        <b>הכנס כתובת</b>
+        <input type="search" placeholder="הכנס כתובת" name="cat" required>
+    </div>
+      <button type="submit" class="login-button">הוסף</button>
+  </div>
+  </form>

@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-header>
+    <h3>  כל ההזמנות  |  מנהל ראשי : {{currentManager}} </h3>
+  </mat-card-header>
+  <mat-card-content>
+
+<table class="cart" *ngIf="ordersToView.length > 0">
+    <thead>
+      <tr>
+        <th>שם מלא</th>
+        <th>שם סניף</th>
+        <th>תאריך הזמנה</th>
+        <th>סטטוס הזמנה</th>
+        <th>עריכת סטטוס הזמנה</th>
+        <th>פריטים שהוזמנו</th>
+      </tr>
+    </thead>
+    <tbody  data-test-id="searched-customers">
+      <tr *ngFor="let ord of ordersToView" class="slide-up-fade-in">
+        <td class="td">{{ ord.fullName }}</td>
+        <td class="td">{{ ord.branch }}</td>
+        <td class="td">{{ ord.date }}</td>
+        <td class="td">{{ ord.status }}</td>
+        <td class="td"><select (change)="editStatus(ord.id,ord.idsl,$event)">
+          <option value="מחסן">מחסן</option>
+          <option value="יצא לסניף">יצא לסניף</option>
+          <option value="בסניף">בסניף</option>
+          <option value="הלקוח לקח">הלקוח לקח!</option>
+        </select></td>
+        <td>{{ ord.shoppingLength }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</mat-card-content>
+</mat-card>
+      

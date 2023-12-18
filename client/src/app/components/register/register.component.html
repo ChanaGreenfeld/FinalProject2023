@@ -1,0 +1,71 @@
+
+
+  <form [formGroup]="registerForm" class="c-container" (ngSubmit)="register($event)" novalidate>
+
+    <div class="wrap-navs">
+      <ul class="c-navs">
+        <li class="c-nav">
+          <a routerLink="/login" class="tablinks">
+            <mat-icon>account_circle</mat-icon>
+            <label>התחברות</label>
+          </a>
+        </li>
+        <li class="c-nav">
+          <a routerLink="/register" class="tablinks active">
+            <mat-icon>star</mat-icon>
+            <label>הרשמה</label>
+          </a>
+        </li>
+      </ul>
+    </div>
+  
+    <h1>ברוכים הבאים!</h1>
+    <h2 class="subtitle">
+      <mat-icon>account_circle</mat-icon>
+      <label>הרשמה</label>
+    </h2>
+    <div class="fields">
+      <div class="field">
+        <b id="fname">שם פרטי</b>
+        <input type="text" formControlName="firstname" placeholder="שם פרטי" name="firstName" aria-labelledby="fname">
+      </div>
+      <div class="field">
+        <b id="lname">שם משפחה</b>
+        <input type="text" formControlName="lastname" placeholder="שם משפחה" aria-labelledby="lname" name="lastname" >
+      </div>
+      <div class="field">
+        <b id="phone">טלפון</b>
+        <input type="text"  formControlName="phone" placeholder="טלפון" name="phone" aria-labelledby="phone" >
+      </div>
+      <div class="field">
+        <b id="email">מייל</b>
+        <input type="text" formControlName="mail" placeholder="מייל" name="mail" aria-labelledby="email" >
+      </div>
+  
+      <div class="address">
+        <div class="field">
+          <b id="street">רחוב</b>
+          <input type="text" formControlName="address" placeholder="רחוב " name="street" aria-labelledby="street">
+        </div>
+        <div class="field number-field">
+          <b id="number">מספר בניין</b>
+          <input type="number" formControlName="number" placeholder="123" name="numbuild" aria-labelledby="number">
+        </div>
+      </div>
+  
+      <div class="field">
+        <b id="city">עיר</b>
+        <input type="text" formControlName="city" placeholder="עיר" name="city" aria-labelledby="city">
+      </div>
+      <div class="field">
+        <b id="userName">שם משתמש</b>
+        <input type="text" formControlName="username" placeholder="שם משתמש" name="username" aria-labelledby="userName">
+      </div>
+      <div class="field">
+        <b id="password">סיסמא</b>
+        <input type="password" formControlName="password" placeholder="סיסמא" aria-labelledby="password" name="password">
+      </div>
+      <button type="submit" [disabled]="!registerForm.valid" class="register-button">כניסה</button>
+    </div>
+  </form>
+  

@@ -1,0 +1,70 @@
+
+<form *ngIf="one" class="container" (ngSubmit)="oneStage($event)">
+    <h1>גיפט כארד</h1>
+    <h2 class="subtitle">
+        <label>שובר כספי</label>
+    </h2>
+    <div class="fields">
+        <div class="field">
+            <b>הכנס סכום</b>
+            <input type="number" max="1500" min="1" placeholder="הכנס סכום" name="sum" required>
+        </div>
+        <button type="submit" class="login-button">בחירה</button>
+    </div>
+</form>
+
+
+
+<form *ngIf="two" class="container" (ngSubmit)="oneStage($event)">
+    <ul class="c-navs">
+        <li class="c-nav">
+            <input type="button" class="login-button" value="למישהו אחר" (click)="toOther()"/> 
+        </li>
+        <li class="c-nav">
+        <input type="button"  class="login-button" value="לעצמי" (click)="toMe()"/> 
+        </li>
+    </ul>
+</form>
+
+
+<form [formGroup]="giftForm" *ngIf="other" class="c-container" (ngSubmit)="toPay($event)" novalidate>
+    <h1>גיפט כארד</h1>
+        <h2 class="subtitle">
+        <label>כל הכבוד על הפרגון!</label>
+        </h2>
+        <div class="fields">
+        <div class="field">
+            <b id="name">שם מקבל המתנה</b>
+            <input type="text" formControlName="name" placeholder="שם מקבל המתנה" name="name" aria-labelledby="name">
+        </div>
+        <div class="field">
+            <b id="bracha">ברכה</b>
+            <input type="text" formControlName="bracha" placeholder="ברכה" aria-labelledby="bracha" name="bracha" >
+        </div>
+        <div class="field">
+            <b id="email">מייל</b>
+            <input type="text"  formControlName="email" placeholder="מייל" name="email" aria-labelledby="email" >
+        </div>
+        <div class="field">
+            <b id="from">ממי המתנה? שם השולח</b>
+            <input type="text" formControlName="from" placeholder="ממי המתנה? שם השולח " name="from" aria-labelledby="from">
+        </div>
+        <button type="submit" [disabled]="!giftForm.valid" class="register-button">המשך</button>
+        </div>
+</form>
+  
+
+<form *ngIf="me" class="container" (ngSubmit)="toPay2()">
+    <h2 class="subtitle">
+        <label>תמיד טוב לפנק את עצמך!</label>
+    </h2>
+    <div class="fields">
+        <button type="submit" class="login-button">המשך</button>
+    </div>
+</form>
+
+
+<input type="button" class="login-button2" *ngIf="isTruePayment" (click)="send()" value="שליחה">
+
+<input type="button" class="login-button2" *ngIf="isTruePayment2" (click)="send2()" value="שליחה">
+

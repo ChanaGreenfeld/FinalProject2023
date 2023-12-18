@@ -1,0 +1,27 @@
+
+  <form [formGroup]="paymentForm" class="c-container" (ngSubmit)="payment($event)" novalidate>
+    <h1>תשלום</h1>
+    <h2 class="subtitle">
+      <label>הכניסו פרטים לתשלום</label>
+    </h2>
+    <div class="fields">
+      <div class="field">
+        <b id="bank">בנק</b>
+        <input type="text" formControlName="bank" placeholder="הכנס שם בנק" name="bank" aria-labelledby="bank">
+      </div>
+      <div class="field">
+        <b id="num">מספר אשראי</b>
+        <input type="text" formControlName="num" placeholder="מספר אשראי" aria-labelledby="num" name="num" >
+      </div>
+      <div class="field">
+        <b id="tokef">תוקף</b>
+        <input type="text"  formControlName="tokef" placeholder="תוקף" name="tokef" aria-labelledby="tokef" >
+      </div>
+      <div class="field">
+        <b id="num3">3 ספרות</b>
+        <input type="text" formControlName="num3" placeholder="3 ספרות בגב הכרטיס" name="num3" aria-labelledby="num3" >
+      </div>
+      <button type="submit" [disabled]="!paymentForm.valid" class="register-button">תשלום</button>
+    </div>
+  </form>
+  
